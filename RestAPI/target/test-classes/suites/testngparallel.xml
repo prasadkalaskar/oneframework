@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite"  parallel="tests" verbose="1">
+	<test name="Ui test firefox">
+		
+		
+   		<parameter name="browser" value="firefox"/>
+   		<groups>
+      		<run>
+        		<include name="bvt"/>
+      		</run>
+    	</groups>
+		<classes>
+				<class name="com.poc.ui.test.AngularAppTests" />
+		</classes>
+	</test> <!-- Test -->
+	<test name="Ui test Chrome">
+		
+		
+   		<parameter name="browser" value="chrome"/>
+   		<groups>
+      		<run>
+        		<include name="bvt"/>
+     		</run>
+    	</groups>
+		<classes>
+				<class name="com.poc.ui.test.AngularAppTests" />
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->
