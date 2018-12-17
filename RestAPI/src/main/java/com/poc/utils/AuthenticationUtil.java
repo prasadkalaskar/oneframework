@@ -1,6 +1,8 @@
 package com.poc.utils;
 
 
+import org.cts.hybrid.ConfigProvider.ConfigProvider;
+
 public class AuthenticationUtil {
 
 	public boolean isAuth;
@@ -21,7 +23,7 @@ public class AuthenticationUtil {
 	}
 
     public void setIsAuth() {
-        this.isAuth = Boolean.valueOf(Utilities.getFrameworkConfig("needAuthentication"));
+	    this.isAuth = Boolean.valueOf(ConfigProvider.loadProperty(EnvConfig.environment,"ofw", "needAuthentication"));
     }
 
     public boolean getIsAuth(){
@@ -29,7 +31,7 @@ public class AuthenticationUtil {
     }
 
     public void setAuthenticationType() {
-        this.authenticationType =  Utilities.getFrameworkConfig("authType");
+        this.authenticationType =  ConfigProvider.loadProperty(EnvConfig.environment,"ofw", "authType");
     }
 
     public String getAuthenticationType() {
@@ -37,7 +39,7 @@ public class AuthenticationUtil {
     }
 
     public void setUserName() {
-        this.userName =  Utilities.getFrameworkConfig("userName");
+        this.userName = ConfigProvider.loadProperty(EnvConfig.environment,"ofw", "userName");
     }
 
 
@@ -46,7 +48,7 @@ public class AuthenticationUtil {
 	}
 
     public void setPassword() {
-        this.password = Utilities.getFrameworkConfig("password");
+        this.password =  ConfigProvider.loadProperty(EnvConfig.environment,"ofw", "password");
     }
 
     public String getPassword() {
