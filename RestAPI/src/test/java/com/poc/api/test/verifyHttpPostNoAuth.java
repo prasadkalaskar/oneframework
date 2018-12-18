@@ -8,6 +8,7 @@ import com.poc.utils.AuthenticationUtil;
 import com.poc.utils.EnvConfig;
 import com.poc.utils.RequestBuilder;
 import com.poc.utils.Utilities;
+import org.cts.hybrid.ConfigProvider.ConfigProvider;
 import org.json.simple.JSONObject;
 import org.testng.annotations.Test;
 
@@ -23,18 +24,20 @@ public class verifyHttpPostNoAuth extends TestInitializer {
 
 
 		RequestBuilder requestBuilder = new RequestBuilder();
+		EnvConfig envConfig =new EnvConfig();
 		JSONObject requestParams = new JSONObject();
-		AuthenticationUtil authenticationUtil = new AuthenticationUtil();
+		AuthenticationUtil authenticationUtil = new AuthenticationUtil(false);
+		Utilities utilities = new Utilities();
 
-		requestBuilder.setURL(EnvConfig.getURLConfiguration("dev", "T3_API_URL"));
+		requestBuilder.setURL(ConfigProvider.loadProperty(EnvConfig.environment,"config", "T3_API_URL"));
 		requestBuilder.setRequestBasePath("/register");
-		requestParams = Utilities.getRequestPayload("topics.json");
-
+		requestParams = utilities.getRequestPayload("topics.json");
 
 		RestValidator restValidator = RestExecutor.post(requestBuilder,requestParams,authenticationUtil);
 
 		System.out.println(restValidator.getResponse().getResponseBody());
-		restValidator.expectCode(201);
+
+		restValidator.expectCode(200);
 
 	}
 }

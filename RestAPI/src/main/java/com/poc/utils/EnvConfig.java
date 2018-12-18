@@ -24,19 +24,5 @@ public class EnvConfig {
 	}
 
 
-	public static String getURLConfiguration(String sEnv, String key) {
-
-		String url="";
-
-		try {
-			return Utilities.getTestDataConfig(sEnv, key);
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		return  url;
-	}
-
 
 }

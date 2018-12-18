@@ -10,16 +10,21 @@ public class AuthenticationUtil {
 	public String userName;
     public String password;
 
-	public AuthenticationUtil() {
+    public AuthenticationUtil() {
 
-	    setIsAuth();
+    }
+	public AuthenticationUtil(Boolean auth) {
 
-	    if(getIsAuth()){
-	        setAuthenticationType();
-	        setUserName();
-	        setPassword();
+        if (auth){
+
+            setIsAuth();
+
+            if(getIsAuth()){
+                setAuthenticationType();
+                setUserName();
+                setPassword();
+            }
         }
-
 	}
 
     public void setIsAuth() {

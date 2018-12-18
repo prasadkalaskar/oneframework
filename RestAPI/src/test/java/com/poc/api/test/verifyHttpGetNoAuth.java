@@ -8,6 +8,7 @@ import com.poc.utils.AuthenticationUtil;
 import com.poc.utils.EnvConfig;
 import com.poc.utils.RequestBuilder;
 import com.poc.utils.Utilities;
+import org.cts.hybrid.ConfigProvider.ConfigProvider;
 import org.json.simple.JSONObject;
 import org.testng.annotations.Test;
 
@@ -28,7 +29,8 @@ public class verifyHttpGetNoAuth extends TestInitializer {
 		RestExecutor restExecutor = new RestExecutor();
 
 		// setup base URL From environment configuration / env selection at run time / read from .properties files of resource directory
-		requestBuilder.setURL(EnvConfig.getURLConfiguration("dev", "T1_API_URL"));
+
+		requestBuilder.setURL(ConfigProvider.loadProperty(EnvConfig.environment,"config", "T1_API_URL"));
 		// setup base URL From environment configuration / env selection at run time / read from .properties files of resource directory
 
 

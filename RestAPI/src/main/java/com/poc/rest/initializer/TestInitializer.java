@@ -8,7 +8,7 @@ import org.testng.annotations.Listeners;
 public class TestInitializer{
 
     public TestInitializer(){
-        EnvConfig envConfig = new EnvConfig();
+
     }
 
 }

@@ -24,15 +24,15 @@ public class verifyHttpAuth extends TestInitializer {
 
 		/*HTTPS REQUEST CREATION MECHANISM*/
 
+		EnvConfig envConfig = new EnvConfig();
 		RequestBuilder requestBuilder = new RequestBuilder();
-		AuthenticationUtil authenticationUtil = new AuthenticationUtil();
+		AuthenticationUtil authenticationUtil = new AuthenticationUtil(true);
 		RestExecutor restExecutor = new RestExecutor();
 
 		// setup base URL From environment configuration / env selection at run time / read from .properties files of resource directory
-		//.getURLConfiguration("dev", "T2_API_URL"));
+
 		requestBuilder.setURL(ConfigProvider.loadProperty(EnvConfig.environment,"config", "T2_API_URL"));
 		// setup base URL From environment configuration / env selection at run time / read from .properties files of resource directory
-
 
 		// Perform HTTP GET
 		RestValidator restValidator = restExecutor.get(requestBuilder, authenticationUtil);
